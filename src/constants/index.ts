@@ -13,14 +13,14 @@ export const API_ROUTES = {
 
 export const PERSONAL = {
   name: 'Андрей',
-  email: 'andrey@example.com',
+  email: 'mail@mail.ru',
   telegram: {
-    handle: '@andrey_dev',
-    url: 'https://t.me/andrey_dev',
+    handle: '@Tg',
+    url: 'https://t.me/Tg',
   },
   github: {
-    label: 'github.com/andrey-dev',
-    url: 'https://github.com/andrey-dev',
+    label: 'github.com',
+    url: 'https://github.com',
   },
   linkedin: {
     url: 'https://linkedin.com/in/andrey-dev',

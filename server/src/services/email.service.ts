@@ -117,6 +117,11 @@ export async function sendContactEmails(data: ContactPayload): Promise<void> {
       'sender',
     );
   } catch (err) {
-    console.warn('[Resend][sender] Копия пользователю не отправлена:', err);
+    console.warn(
+      '[Resend][sender] Копия пользователю не улетела — но мы не паникуем.\n' +
+      '  Скорее всего, DNS ещё в пути: Cloudflare раздумывает над нашим доменом и обещает всё сделать за пару часов.\n' +
+      '  "Looking for DNS records..." — классика. Подождём. Письмо владельцу доставлено, это главное.',
+      err,
+    );
   }
 }
