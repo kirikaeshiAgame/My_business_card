@@ -46,23 +46,39 @@ andrey-portfolio/
 
 ---
 
-## Запуск
+## Запуск локально
 
 ### Требования
 
 - Node.js ≥ 18
 - npm ≥ 9
 
-### 1. Установить зависимости
+---
+
+### Шаг 1 — Клонировать репозиторий
+
+```bash
+git clone https://github.com/kirikaeshiAgame/My_business_card.git
+cd My_business_card
+```
+
+### Шаг 2 — Установить зависимости
 
 ```bash
 npm install
 cd server && npm install && cd ..
 ```
 
-### 2. Настроить переменные окружения
+### Шаг 3 — Создать файл с переменными окружения
 
-Создайте файл `server/.env` на основе `server/.env.example` и заполните ключи:
+Файл `server/.env` **не включён в репозиторий** (содержит секретные ключи). Нужно создать его вручную:
+
+```bash
+cp server/.env.example server/.env   # Linux / macOS
+copy server\.env.example server\.env  # Windows
+```
+
+Затем открыть `server/.env` и заполнить ключи:
 
 ```env
 PORT=3001
@@ -70,44 +86,59 @@ NODE_ENV=development
 CORS_ORIGIN=http://localhost:5173
 SITE_URL=http://localhost:5173
 
-# Email — Resend API (https://resend.com, есть бесплатный тариф)
-RESEND_API_KEY=re_your_key_here
-RESEND_FROM=onboarding@resend.dev   # или ваш домен
-OWNER_EMAIL=your@email.com          # куда приходят заявки с формы
+# Email — Resend API
+# Регистрация: https://resend.com (есть бесплатный тариф)
+# Создайте ключ в разделе API Keys
+RESEND_API_KEY=re_ВАШ_КЛЮЧ
+RESEND_FROM=onboarding@resend.dev   # без верификации домена — оставьте так
+OWNER_EMAIL=your@email.com          # ваш email — куда придут заявки с формы
 
-# AI — OpenRouter (https://openrouter.ai/keys, бесплатно)
-OPENROUTER_API_KEY=sk-or-v1-your_key_here
+# AI — OpenRouter
+# Бесплатный ключ: https://openrouter.ai/keys
+OPENROUTER_API_KEY=sk-or-v1-ВАШ_КЛЮЧ
 ```
 
-> **Без API-ключей** форма выдаст ошибку при отправке, а AI-помощник не запустится. Сам сайт при этом работает.
+> **Что будет без ключей:** сайт откроется и будет работать визуально.
+> Форма обратной связи вернёт ошибку при отправке, AI-помощник не запустится.
 
-### 3. Запустить в режиме разработки
+### Шаг 4 — Запустить в режиме разработки
 
 ```bash
 # Запускает frontend (порт 5173) и backend (порт 3001) одновременно
 npm run start
+```
 
-# Или раздельно
+Или раздельно:
+
+```bash
 npm run dev          # Frontend → http://localhost:5173
 npm run server:dev   # Backend  → http://localhost:3001
 ```
 
-### 4. Сборка для продакшена
+### Шаг 5 — Открыть в браузере
 
-```bash
-npm run build           # Собирает frontend в dist/
-cd server && npm run build  # Собирает backend в server/dist/
+```
+http://localhost:5173
 ```
 
-### Команды
+---
+
+### Сборка для продакшена
 
 ```bash
-npm run dev          # Vite dev server
+npm run build                    # Собирает frontend в dist/
+cd server && npm run build       # Собирает backend в server/dist/
+```
+
+### Все команды
+
+```bash
+npm run dev          # Vite dev server (только frontend)
 npm run build        # TypeScript + Vite build
 npm run lint         # ESLint проверка
 npm run format       # Prettier форматирование
-npm run server:dev   # Backend (ts-node-dev с hot-reload)
-npm run start        # Frontend + backend одновременно (concurrently)
+npm run server:dev   # Backend с hot-reload (только сервер)
+npm run start        # Frontend + backend одновременно
 ```
 
 ---
