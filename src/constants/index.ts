@@ -6,9 +6,11 @@ export const SECTION_IDS = {
   contact: 'contact',
 } as const;
 
+const API_BASE = import.meta.env.VITE_API_URL ?? '';
+
 export const API_ROUTES = {
-  contact: '/api/contact',
-  aiAssist: '/api/ai/assist',
+  contact: `${API_BASE}/api/contact`,
+  aiAssist: `${API_BASE}/api/ai/assist`,
 } as const;
 
 export const PERSONAL = {
