@@ -1,0 +1,176 @@
+.workflow {
+  background: $color-bg;
+
+  // ── Steps list ─────────────────────────────────────────────────────────
+  &__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: $space-16;
+    position: relative;
+  }
+
+  &__step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: $space-5;
+    padding-bottom: $space-8;
+    position: relative;
+
+    @include md {
+      grid-template-columns: 3.5rem 1fr;
+      gap: $space-6;
+    }
+  }
+
+  &__step-number {
+    flex-shrink: 0;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+    font-family: $font-mono;
+    letter-spacing: 0.05em;
+    padding-top: 2px;
+  }
+
+  &__step-connector {
+    position: absolute;
+    left: calc(1.25rem - 1px);
+    top: 1.5rem;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient($color-accent-border, $color-border);
+
+    @include md {
+      left: calc(1.75rem - 1px);
+    }
+  }
+
+  &__step-content {
+    @include card;
+    padding: $space-6;
+    transition: box-shadow $transition-base, transform $transition-base,
+                border-color $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-md;
+      transform: translateX(4px);
+      border-color: $color-accent-border;
+    }
+  }
+
+  &__step-header {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-3;
+  }
+
+  &__step-icon {
+    font-size: $font-size-xl;
+    line-height: 1;
+  }
+
+  &__step-title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    letter-spacing: $letter-spacing-base;
+  }
+
+  &__step-desc {
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    color: $color-text-secondary;
+  }
+
+  // ── AI block ───────────────────────────────────────────────────────────
+  &__ai {
+    @include card;
+    padding: clamp($space-8, 5vw, $space-12);
+    background: linear-gradient(135deg, $color-accent-bg 0%, rgba(124, 58, 237, 0.06) 100%);
+    border-color: $color-accent-border;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+  }
+
+  &__ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-1 $space-3;
+    background: $color-accent;
+    color: #fff;
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.04em;
+    margin-bottom: $space-4;
+  }
+
+  &__ai-title {
+    font-size: clamp($font-size-lg, 2.5vw, $font-size-xl);
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    letter-spacing: $letter-spacing-snug;
+    margin-bottom: $space-4;
+  }
+
+  &__ai-desc {
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    color: $color-text-secondary;
+    max-width: 64ch;
+    margin-bottom: $space-8;
+  }
+
+  &__ai-tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+
+    @include md {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__ai-tool {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    padding: $space-4;
+    background: $color-surface;
+    border: 1px solid $color-accent-border;
+    border-radius: $radius-md;
+    transition: box-shadow $transition-fast, transform $transition-fast;
+
+    &:hover {
+      box-shadow: $shadow-sm;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__ai-tool-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-accent;
+  }
+
+  &__ai-tool-desc {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    line-height: $line-height-snug;
+  }
+}

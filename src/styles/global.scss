@@ -1,0 +1,126 @@
+// Variables and mixins are injected via vite.config additionalData for all component files.
+// _reset.scss is @use'd as a Sass module and loads variables independently.
+@use "reset";
+
+// ─── Selection ─────────────────────────────────────────────────────────────
+::selection {
+  background-color: $color-accent-bg;
+  color: $color-accent;
+}
+
+// ─── Scrollbar (Webkit) ────────────────────────────────────────────────────
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: $color-bg;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-border-hover;
+  border-radius: $radius-full;
+
+  &:hover {
+    background: $color-text-muted;
+  }
+}
+
+// ─── Typography scale ──────────────────────────────────────────────────────
+.text-display {
+  font-size: clamp($font-size-3xl, 6vw, $font-size-5xl);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.text-heading {
+  font-size: clamp($font-size-xl, 3.5vw, $font-size-3xl);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-snug;
+  letter-spacing: $letter-spacing-snug;
+}
+
+.text-subheading {
+  font-size: clamp($font-size-lg, 2vw, $font-size-xl);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+// ─── Gradient text ─────────────────────────────────────────────────────────
+.gradient-text {
+  background: linear-gradient(135deg, $color-accent 0%, #7C3AED 60%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ─── Container ─────────────────────────────────────────────────────────────
+.container {
+  @include container;
+}
+
+// ─── Section shared layout ─────────────────────────────────────────────────
+.section {
+  padding-block: $section-padding-y;
+
+  &__label {
+    @include section-label;
+    margin-bottom: $space-4;
+  }
+
+  &__header {
+    margin-bottom: clamp($space-12, 6vw, $space-20);
+  }
+
+  &__title {
+    @include heading(clamp($font-size-2xl, 4vw, $font-size-4xl));
+    margin-bottom: $space-4;
+  }
+
+  &__subtitle {
+    @include body-text($font-size-md);
+    max-width: 56ch;
+  }
+}
+
+// ─── Scroll animation utility ──────────────────────────────────────────────
+.animate-up {
+  @include animate-fade-up;
+}
+
+.animate-in {
+  @include animate-fade-in;
+}
+
+// ─── Delay utilities ───────────────────────────────────────────────────────
+@for $i from 1 through 8 {
+  .delay-#{$i} {
+    transition-delay: #{$i * 0.08}s !important;
+  }
+}
+
+// ─── Accessibility ─────────────────────────────────────────────────────────
+.sr-only {
+  @include visually-hidden;
+}
+
+.skip-link {
+  @include visually-hidden;
+
+  &:focus {
+    position: fixed;
+    top: $space-4;
+    left: $space-4;
+    width: auto;
+    height: auto;
+    clip: auto;
+    white-space: normal;
+    background: $color-surface;
+    padding: $space-3 $space-6;
+    border-radius: $radius-md;
+    border: 2px solid $color-accent;
+    z-index: $z-tooltip;
+    font-weight: $font-weight-semibold;
+    color: $color-accent;
+    box-shadow: $shadow-lg;
+  }
+}

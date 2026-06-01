@@ -1,0 +1,209 @@
+.contact {
+  background: $color-bg;
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-8;
+
+    @include lg {
+      grid-template-columns: 340px 1fr;
+      gap: $space-10;
+      align-items: start;
+    }
+  }
+
+  // ── Info sidebar ────────────────────────────────────────────────────────
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  &__info-card {
+    @include card;
+    padding: $space-6;
+  }
+
+  &__info-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $space-5;
+  }
+
+  &__info-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  &__info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-4;
+  }
+
+  &__info-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: $radius-md;
+    background: $color-accent-bg;
+    @include flex-center;
+    font-size: $font-size-base;
+    flex-shrink: 0;
+  }
+
+  &__info-label {
+    display: block;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-1;
+  }
+
+  &__info-value {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    transition: color $transition-fast;
+    @include focus-ring;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__availability {
+    @include card;
+    padding: $space-4 $space-5;
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    background: $color-success-bg;
+    border-color: rgba(22, 163, 74, 0.2);
+  }
+
+  &__availability-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $color-success;
+    flex-shrink: 0;
+    animation: contact-pulse 2.5s ease-in-out infinite;
+  }
+
+  &__availability-status {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-success;
+  }
+
+  &__availability-note {
+    display: block;
+    font-size: $font-size-xs;
+    color: #127a39;
+    margin-top: $space-1;
+  }
+
+  // ── Form ───────────────────────────────────────────────────────────────
+  &__form-wrap {
+    @include card;
+    padding: clamp($space-6, 4vw, $space-10);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  &__form-header {
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $space-3;
+    margin-bottom: $space-2;
+  }
+
+  &__form-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    letter-spacing: $letter-spacing-base;
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-5;
+
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__form-error {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-4;
+    background: $color-error-bg;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    color: $color-error;
+    font-weight: $font-weight-medium;
+  }
+
+  &__form-note {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    text-align: center;
+    line-height: $line-height-relaxed;
+  }
+
+  // ── Success state ──────────────────────────────────────────────────────
+  &__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $space-4;
+    padding: $space-12 $space-8;
+  }
+
+  &__success-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background: $color-success-bg;
+    border: 2px solid rgba(22, 163, 74, 0.3);
+    @include flex-center;
+    font-size: $font-size-2xl;
+    color: $color-success;
+    font-weight: $font-weight-bold;
+  }
+
+  &__success-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    letter-spacing: $letter-spacing-snug;
+  }
+
+  &__success-text {
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    color: $color-text-secondary;
+    max-width: 42ch;
+  }
+}
+
+@keyframes contact-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+}

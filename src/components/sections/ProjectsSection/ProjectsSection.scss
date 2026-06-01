@@ -1,0 +1,159 @@
+.projects {
+  background: $color-surface;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+// ── Project card ─────────────────────────────────────────────────────────────
+.project-card {
+  @include card;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow $transition-slow, transform $transition-slow;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-4px);
+
+    .project-card__image-overlay {
+      opacity: 1;
+    }
+
+    .project-card__mockup-bar {
+      transform: scaleX(1);
+    }
+  }
+
+  // ── Image area ─────────────────────────────────────────────────────────
+  &__image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: $space-4;
+  }
+
+  &__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &__tag {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    padding: $space-1 $space-3;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+
+  &__mockup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    width: 60%;
+    opacity: 0.35;
+  }
+
+  &__mockup-bar {
+    height: 3px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: $radius-full;
+    transform: scaleX(0.7);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  // ── Body ───────────────────────────────────────────────────────────────
+  &__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    padding: $space-6;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    letter-spacing: $letter-spacing-base;
+    line-height: $line-height-snug;
+  }
+
+  &__desc {
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    color: $color-text-secondary;
+    flex: 1;
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__links {
+    display: flex;
+    gap: $space-3;
+    padding-top: $space-2;
+    border-top: 1px solid $color-border;
+    margin-top: auto;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    padding: $space-2 $space-4;
+    border-radius: $radius-md;
+    transition: background-color $transition-fast, color $transition-fast;
+    @include focus-ring;
+
+    &--demo {
+      color: $color-accent;
+      background: $color-accent-bg;
+
+      &:hover {
+        background: #dce4ff;
+      }
+    }
+
+    &--github {
+      color: $color-text-secondary;
+      background: $color-surface-alt;
+
+      &:hover {
+        background: $color-border;
+        color: $color-text-primary;
+      }
+    }
+  }
+}

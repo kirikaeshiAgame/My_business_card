@@ -1,0 +1,31 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+
+  &--default {
+    background: $color-surface-alt;
+    color: $color-text-secondary;
+  }
+
+  &--accent {
+    background: $color-accent-bg;
+    color: $color-accent;
+  }
+
+  &--success {
+    background: $color-success-bg;
+    color: $color-success;
+  }
+
+  &--outline {
+    background: transparent;
+    color: $color-text-secondary;
+    border: 1.5px solid $color-border;
+  }
+}

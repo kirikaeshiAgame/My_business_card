@@ -1,0 +1,98 @@
+.footer {
+  background: $color-text-primary;
+  color: rgba(255, 255, 255, 0.7);
+  padding-top: $space-16;
+
+  &__inner {
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $space-8;
+    padding-bottom: $space-12;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    color: #fff;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-base;
+    transition: opacity $transition-fast;
+    @include focus-ring;
+    border-radius: $radius-sm;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__logo-mark {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: $radius-sm;
+    background: $color-accent;
+    color: #fff;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    @include flex-center;
+  }
+
+  &__tagline {
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    max-width: 28ch;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__social {
+    display: flex;
+    gap: $space-3;
+    list-style: none;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: $radius-md;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.05em;
+    transition: background-color $transition-fast, color $transition-fast,
+                transform $transition-fast;
+    @include focus-ring;
+
+    &:hover {
+      background: $color-accent;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-2;
+    padding-block: $space-5;
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
